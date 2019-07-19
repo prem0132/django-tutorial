@@ -2,11 +2,16 @@ pipeline {
   agent {
     docker {
       args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
-      image 'docker'
+      image 'hashmapinc/python:build-agent'
     }
-
   }
   stages {
+    stage('Run Tests') {
+      steps {
+        sh 'pip install -r requirements.txt'
+        sh 'python manage.py test'
+      }
+    }
     stage('Build Image') {
       steps {
         sh 'ls -larth'
@@ -16,7 +21,7 @@ pipeline {
     }
     stage('Publish Image') {
       steps {
-        withCredentials(bindings: [usernamePassword(credentialsId: 'docker_hub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+        withCredentials(bindings: [usernamePassword(credentialsId: 'dockerhubPWD', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
           sh 'docker login -u $USERNAME -p $PASSWORD'
         }
 

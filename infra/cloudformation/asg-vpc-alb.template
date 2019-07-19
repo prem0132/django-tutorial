@@ -497,8 +497,13 @@
               "",
               [
                 "#!/bin/bash -xe\n",
-                "yum update -y aws-cfn-bootstrap\n",
-
+                "sudo apt-get update",
+                "sudo apt-get install -y git python3-pip",
+                "git clone https://github.com/prem0132/django-tutorial.git",
+                "cd django-tutorial",
+                "sudo pip install -r requirements.txt",
+                "python3 manage.py migrate",
+                "python3 manage.py runserver\n",
                 "/opt/aws/bin/cfn-init -v ",
                 "         --stack ",
                 { "Ref": "AWS::StackName" },

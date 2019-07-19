@@ -1,0 +1,58 @@
+version: '3.5'
+
+services:
+  postgresql:
+    container_name: postgresql
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-docker}
+      POSTGRES_DB: ${POSTGRES_DB:-mysite}
+      PGDATA: /data/postgres
+    volumes:
+       - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  django-demo-dbsetup:
+    container_name: django-demo-dbsetup
+    image: premhashmap/django-demo-dbsetup
+    environment:
+      DATABASE_HOST: "postgresql"
+      DATABASE_PORT: ${DATABASE_PORT:-5432}
+      DATABASE_NAME: ${DATABASE_NAME:-mysite}
+      DATABASE_USER: ${DATABASE_USER:-postgres}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-docker}
+    networks:
+      - postgres
+    links:
+      - postgresql
+    restart: on-failure
+
+  django-demo:
+    container_name: django-demo
+    image: premhashmap/django-demo
+    environment:
+      DATABASE_HOST: "postgresql"
+      DATABASE_PORT: ${DATABASE_PORT:-5432}
+      DATABASE_NAME: ${DATABASE_NAME:-mysite}
+      DATABASE_USER: ${DATABASE_USER:-postgres}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-docker}
+    networks:
+      - postgres
+    ports:
+      - "8000:8000"      
+    links:
+      - postgresql
+    restart: unless-stopped   
+     
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+    postgres:

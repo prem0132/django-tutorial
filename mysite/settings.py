@@ -12,6 +12,39 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
+from django.core.exceptions import ImproperlyConfigured
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+
+def ABS_PATH(*args):  # noqa
+    return os.path.join(BASE_DIR, *args)
+
+
+def _load_env_file():
+    envfile = ABS_PATH('.env')
+    print(envfile)
+    if os.path.isfile(envfile):
+        for line in open(envfile):
+            line = line.strip()
+            if not line or line.startswith('#') or '=' not in line:
+                continue
+            k, v = line.split('=', 1)
+            os.environ.setdefault(k, v)
+            print(k, v)
+
+
+_load_env_file()
+
+
+def get_env_value(env_variable):
+    try:
+        return os.environ[env_variable]
+    except KeyError:
+        error_msg = 'Set the {} environment variable'.format(env_variable)
+        raise ImproperlyConfigured(error_msg)
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -26,7 +59,6 @@ SECRET_KEY = '%ymny-!plsi=7pq)lqqwh-8+(q9(33z-4ut_d4uw(*o2^syadc'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -72,12 +104,31 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+# https: // docs.djangoproject.com/en/2.0/ref/settings/  # databases
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     },
+#     "postgres": {
+#         "ENGINE": "django.db.backends.postgresql_psycopg2",
+#         "NAME": "mysite",
+#         "USER": "postgres",
+#         "PASSWORD": "docker",
+#         "HOST": "localhost",
+#         "PORT": "5432",
+#     }
+# }
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': get_env_value('DATABASE_NAME'),
+        'HOST': get_env_value('DATABASE_HOST'),
+        'PORT': int(get_env_value('DATABASE_PORT')),
+        'USER': get_env_value('DATABASE_USER'),
+        'PASSWORD': get_env_value('DATABASE_PASSWORD'),
     }
 }
 

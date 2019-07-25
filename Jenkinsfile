@@ -29,7 +29,7 @@ pipeline {
       steps {
         sh 'docker build -t premhashmap/django-demo-dbsetup -f Dockerfile-database-setup .'
         sh 'docker build -t premhashmap/django-demo .'
-        sh 'docker build -t premhashmap/nginx:django-demo -f Dockerfile-nginx.'
+        sh 'docker build -t premhashmap/nginx:django-demo -f Dockerfile-nginx .'
       }
     }
     stage('Publish Image') {

@@ -25,8 +25,7 @@ spec:
   ports:
     - port: 80
       targetPort: 8000
-      nodePort: 32432
       name: django-demo
   selector:
     component: django-demo
-  type: NodePort        
+  type: ClusterIP        

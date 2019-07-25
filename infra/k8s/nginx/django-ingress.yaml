@@ -14,7 +14,7 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: django-demo
+          serviceName: nginx-service
           servicePort: 80
         path: /
   tls:

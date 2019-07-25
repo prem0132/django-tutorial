@@ -1,0 +1,4 @@
+FROM nginx
+WORKDIR /usr/src/static
+COPY polls/static .
+COPY infra/k8s/nginx/default.conf /etc/nginx/conf.d/

@@ -1,5 +1,9 @@
 # Django Tutorial
 
+[![Build Status](http://jenkins.hashmapinc.com:8080/buildStatus/icon?job=django-tutorial%2Fmaster)](http://jenkins.hashmapinc.com:8080/job/django-tutorial/job/master/)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5ed7a55ee5c242c396e404deae4a6e46)](https://www.codacy.com/app/prem0132/django-tutorial?utm_source=github.com&utm_medium=referral&utm_content=prem0132/django-tutorial&utm_campaign=Badge_Grade)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fprem0132%2Fdjango-tutorial.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fprem0132%2Fdjango-tutorial?ref=badge_shield)
+
 This repository contains django boilerplate code with files and instruction to deploy it on a production environment as well as enabling best DevOps practices.
 
 ## Assumptions:

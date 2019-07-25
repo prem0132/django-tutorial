@@ -1,4 +1,6 @@
 # Django Tutorial
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fprem0132%2Fdjango-tutorial.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fprem0132%2Fdjango-tutorial?ref=badge_shield)
+
 
 This repository contains django boilerplate code with files and instruction to deploy it on a production environment as well as enabling best DevOps practices.
 
@@ -100,3 +102,7 @@ RDS with multiAZ and Read Replicas will have way better performance than Postgre
 4. Worked more on the cloudformation templates
 5. SSL/TLS with proper certs from AWS or Let's Encrypt
 6. Some load testig
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fprem0132%2Fdjango-tutorial.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fprem0132%2Fdjango-tutorial?ref=badge_large)

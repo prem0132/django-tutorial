@@ -98,8 +98,9 @@ RDS with multiAZ and Read Replicas will have way better performance than Postgre
 
 ## What else would I have done?
 
-1. Create helm chart for k8s manifests
-2. Extend the pipeline to deploy on K8s and AWS based on branch and tags
-3. Worked more on the cloudformation templates
-4. SSL/TLS with proper certs from AWS or Let's Encrypt
-5. Some load testig
+1. Serve static content using CDN 
+2. Create helm chart for k8s manifests
+3. Extend the pipeline to deploy on K8s and AWS based on branch and tags
+4. Worked more on the cloudformation templates
+5. SSL/TLS with proper certs from AWS or Let's Encrypt
+6. Some load testig

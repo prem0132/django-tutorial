@@ -1,4 +1,6 @@
 # Django Tutorial
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fprem0132%2Fdjango-tutorial.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fprem0132%2Fdjango-tutorial?ref=badge_shield)
+
 
 [![Build Status](http://jenkins.hashmapinc.com:8080/buildStatus/icon?job=django-tutorial%2Fmaster)](http://jenkins.hashmapinc.com:8080/job/django-tutorial/job/master/)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5ed7a55ee5c242c396e404deae4a6e46)](https://www.codacy.com/app/prem0132/django-tutorial?utm_source=github.com&utm_medium=referral&utm_content=prem0132/django-tutorial&utm_campaign=Badge_Grade)
@@ -104,3 +106,7 @@ RDS with multiAZ and Read Replicas will have way better performance than Postgre
 4. Worked more on the cloudformation templates
 5. SSL/TLS with proper certs from AWS or Let's Encrypt
 6. Some load testig
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fprem0132%2Fdjango-tutorial.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fprem0132%2Fdjango-tutorial?ref=badge_large)
